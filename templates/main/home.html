@@ -7,13 +7,66 @@
     {% block meta %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AwesomeRecipe</title>
+    <link rel="stylesheet" href="{% static '/css/home.css' %}">
     {% endblock %}
+
+
     
 </head>
 <body>
 
     {% block content %}
+
+
+
+    <div class="main d-flex mx-4 mt-3 ">
+
+        <div class="left"></div>
+
+        <div class="add-post-card card" style="width: 18rem; margin: 20px;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Add Post</a>
+            </div>
+          </div>
+
+        <!-- -------- -->
+        <div class="right" >
+
+          <div class="post-card" >
+            <div class="post-card-header flexrow">
+              <img src="/static/img/male user.png" width="50px" height="50px" alt="Uploader Profile Picture">
+              <div class="post-card-header-info">
+                <a href="path/to/user-profile.html">Uploader Name</a>
+                <button type="button" class="follow-button">Follow</button>
+    
+              </div>
+    
+            </div>
+      
+            <div class="post-card-body flexrow">
+                <div class="post-card-body-text flexcol">
+                  <h2><a href="path/to/post-detail.html">Recipe Heading</a></h2>
+                  <p>
+                    Recipe detail (max 2 lines)
+                    <a href="path/to/post-detail.html" class="see-more-button">. . .See More</a>
+                  </p>
+                </div>
+    
+            <div class="post-card-body-img">
+              <img src="/static/img/Recipe img examples.jpeg" alt="Recipe image">
+            </div>
+              </div>
+        </div>
+
+
+      
+
+        </div>
+
+    </div>
 
     {% endblock %}
     

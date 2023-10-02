@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flexrow{
+    display: flex;
+    flex-direction: row;
+}
+.flexcol{
+    display: flex;
+    flex-direction: column;
+}
+
+.post_detail_container{
+    margin: 70px auto 15px auto;
+    width: 80%;
+    margin-bottom: 50px;
+}
+
+
+.prev_exit_nav{
+    width: 100%;
+    top: 10;
+    height: 50px;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1;
+
+
+}
+
+  .prev_exit_nav img {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+  
+  .prev_exit_nav .prev {
+    left: 0;
+  }
+  
+  .prev_exit_nav .exit {
+    right: 0;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+.left {
+    flex-basis: 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+.right{
+    flex-grow: 1;
+}
+
+
+.post-card{
+    background-color: rgb(239, 239, 239);
+    padding: 20px;
+    padding-bottom: 15px;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 8px;
+}
+.post-card-header-container{
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.post-card-header-container > .bookmark-icon > img{
+    height: 40px;
+    width: 40px;
+
+}
+.post_card_header{
+    align-items: center;
+    padding-bottom: 10px;
+}
+.post-card-header-info{
+    margin-left: 10px;
+}
+.post-card-header-info > a{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+.post_card_header > .follow-button{
+    font-size: 14px;
+    margin-left: 50px;
+    padding: 5px 10px;
+    background-color: rgb(49, 210, 242);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.post-card-body{
+    margin-top: 15px;
+    justify-content: space-between;
+}
+.post-card-body-text{
+    font-size: 18px;
+    color: rgb(51, 51, 51);
+    max-width: 65%;
+}
+
+.post-card-body-text > h2 >  a{
+    color: rgb(51, 51, 51);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+.post-card-body-detail{
+    overflow: hidden;
+    margin-top: 45px;
+    justify-content: space-between;
+}
+
+.post-card-body-detail > p{
+    font-size: 16px;
+}
+
+
+.post-card-body-img > img{
+    width: 350px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-card-body-img{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
