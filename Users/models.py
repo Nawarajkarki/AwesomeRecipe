@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Users personal files uploading directory
 def user_directory_path(instance, filename):
-    return 'media/user_{0}/{1}'.format(instance.user.id, filename)
+    return 'media/User_{0}/{1}'.format(instance.id, filename)
 
 
 class User(AbstractUser):
@@ -15,5 +15,6 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     display_name = models.CharField(max_length=50, null=True, blank=True)
     display_picture = models.ImageField(upload_to=user_directory_path, null = True , blank = True)
+    cover_picture = models.ImageField(upload_to=user_directory_path, null=True, blank=True)
     followers = models.PositiveIntegerField(default=0)  
     
