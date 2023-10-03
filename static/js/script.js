@@ -1,9 +1,15 @@
-const bookmarkIconImg = document.getElementById("bookmark_icon");
+const seeMoreButtons = document.querySelectorAll('.see-more-button');
 
-bookmarkIconImg.addEventListener("click", function() {
-  if (bookmarkIconImg.src.endsWith("bookmark.png")) {
-    bookmarkIconImg.src = "/static/img/bookmark-clicked.png";
-  } else {
-    bookmarkIconImg.src = "/static/img/bookmark.png";
-  }
+seeMoreButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        localStorage.setItem('scrollPosition', window.pageYOffset);
+    });
+});
+
+window.addEventListener('load', () => {
+    const scrollPosition = localStorage.getItem('scrollPosition');
+    if (scrollPosition) {
+        window.scrollTo(0, scrollPosition);
+        localStorage.removeItem('scrollPosition');
+    }
 });
