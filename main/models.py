@@ -1,5 +1,5 @@
 from django.db import models
-
+from autoslug import AutoSlugField
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -12,10 +12,11 @@ def user_directory_path(instance, filename):
 
 
 class RecipePost(models.Model):
-    slug = models.SlugField(max_length=20, unique=True)
-    posted_by = models.ForeignKey(User, on_delete=models.CASCADE),
+    posted_by = models.ForeignKey(User, on_delete=models.CASCADE, default='')
     posted_at = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=500)
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=300)
+    slug = AutoSlugField(populate_from='title', unique=True)
     
     def __str__(self):
         return self.title
@@ -27,16 +28,31 @@ class Ingredient(models.Model):
     quantity = models.CharField(max_length=50)
     
     def __str__(self):
-        return self.title
+        return self.ingredients
     
     
 class Steps(models.Model):
     recipe = models.ForeignKey(RecipePost, on_delete=models.CASCADE, related_name= 'steps')
-    steps = models.CharField(max_length=500)
+    step = models.CharField(max_length=500)
     
     def __str__(self):
-        return self.title
+        return self.step
     
-class Images(models.Model):
+class RecipeImages(models.Model):
     recipe = models.ForeignKey(RecipePost, on_delete=models.CASCADE, related_name= 'images')
     images = models.ImageField(upload_to=user_directory_path)
+    
+    def __str__(self):
+        return self.images.name
+    
+    
+    
+class Saved(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='saved')
+    recipe = models.ForeignKey(RecipePost, on_delete=models.CASCADE, related_name='saved')
+    
+    class Meta:
+        unique_together = ('user', 'recipe')
+        
+    def __str__(self):
+        return f"{self.user.username} saved {self.recipe.pk}"
