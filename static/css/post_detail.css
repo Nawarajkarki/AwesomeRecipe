@@ -70,7 +70,7 @@
 
 
 .post-card{
-    background-color: rgb(239, 239, 239);
+    background-color: rgb(245, 245, 245);
     padding: 20px;
     padding-bottom: 15px;
     font-family: 'Open Sans', sans-serif;
@@ -112,14 +112,16 @@
     box-shadow: none;
 }
 
-.post-card-body{
+.post_card_body_upper_container{
     margin-top: 15px;
     justify-content: space-between;
+    max-height: 300px;
 }
 .post-card-body-text{
     font-size: 18px;
     color: rgb(51, 51, 51);
-    max-width: 65%;
+    min-width: 45%;
+    max-width: 48%;
 }
 
 .post-card-body-text > h2 >  a{
@@ -130,24 +132,74 @@
 
 
 
-.post-card-body-detail{
-    overflow: hidden;
-    margin-top: 45px;
-    justify-content: space-between;
+.post-card-body-text{
+    align-items: center;
+    margin-top: 30px;
+    /* justify-content: center; */
 }
 
-.post-card-body-detail > p{
+.post-card-body-text > h2{
+    font-size: 32px;
+}
+
+.post-card-body-text > p{
     font-size: 16px;
+    margin-top: 20px;
+}
+.post-card-body-img{
+    width: 45%;
+    max-width: 48%;
+    height: 100%;
+    max-height: 300px;
 }
 
-
-.post-card-body-img > img{
-    width: 350px;
-    height: 200px;
-    object-fit: cover;
-}
 
 .post-card-body-img{
     margin-top: 15px;
     margin-bottom: 15px;
+    height: auto;
+    max-height: 300px;
+}
+
+.caroousel_height{
+    height: 100%;
+    max-height: 300px;
+}
+
+.post-card-body-img  img,
+.post-card-body-img  .carouselExampleInterval{
+    width: 100%;
+    
+    object-fit: cover;
+}
+
+
+
+
+.ingredients_and_steps_container{
+    margin-top: 30px;
+
+}
+.ingredients_and_steps_container h2{
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.ingredients_and_steps_container > .ingredients > .list-group{
+    width: 500px;
+    max-width: 800px;
+}
+
+
+.ingredients_and_steps_container .steps{
+    margin-top: 40px;
+}
+.ingredients_and_steps_container .steps ol{
+
+    border-left: 1px solid rgb(165, 165, 165);
+}
+
+.steps  li{
+    margin: 10px 0px;
+    font-size: 18px;
 }

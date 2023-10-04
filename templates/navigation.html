@@ -13,19 +13,30 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary p-md-2">
   <div class="container-fluid">
     <div>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% url 'home' %}">
             <img src="/static/img/logo.png" alt="Logo" width="36" height="30">
         </a>
-        <a class="navbar-brand" href="#">AwesomeRecipe</a>
+        <a class="navbar-brand" href="{% url 'home' %}">AwesomeRecipe</a>
     </div>
 
     
 
       <div class="d-flex">
+        {% if ser.is_authenticated %}
         <a class="navbar-brand" href="{% url 'user_profile' %}">
             <img src="/static/img/male user.png" alt="Dp" width="46" height="40" class="d-inline-block align-text-center" style="border-radius: 50%;">
             User Name
           </a>
+        {% else %}  
+        <a href="{% url 'login' %}" class="login navbar-brand">
+          Login
+        </a>
+        <p class="navbar-brand">/</p>
+        <a href="{% url 'signup' %}" class="signup navbar-brand">
+          Signup
+        </a>
+        
+        {% endif %}
       </div>
    
   </div>
