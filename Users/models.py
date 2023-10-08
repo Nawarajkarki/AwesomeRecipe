@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Users personal files uploading directory
 def user_directory_path(instance, filename):
-    return 'media/User_{0}/{1}'.format(instance.username, filename)
+    return '{0}/profile_images/{1}'.format(instance.username, filename)
 
 
 class User(AbstractUser):

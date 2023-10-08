@@ -7,14 +7,13 @@ User = get_user_model()
 
 
 def user_directory_path(instance, filename):
-    return 'user_{0}/{1}/recipe/recipe_{0}/{1}'.format(instance.User.id, instance.RecipePost.slug, filename)
-
+    return '{0}/recipe/{1}/{2}'.format(instance.recipe.author.username, instance.recipe.slug, filename)
 
 
 class RecipePost(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default='')
     posted_at = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=200)
+    title = models.Char0Field(max_length=200)
     description = models.CharField(max_length=300)
     slug = AutoSlugField(populate_from='title', unique=True)
     
@@ -28,7 +27,7 @@ class Ingredient(models.Model):
     quantity = models.CharField(max_length=50)
     
     def __str__(self):
-        return self.ingredients
+        return self.ingredient
     
     
 class Step(models.Model):
@@ -41,9 +40,6 @@ class Step(models.Model):
 class RecipeImage(models.Model):
     recipe = models.ForeignKey(RecipePost, on_delete=models.CASCADE, related_name= 'images')
     images = models.ImageField(upload_to=user_directory_path)
-    
-    def __str__(self):
-        return self.images.name
     
     
     
