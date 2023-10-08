@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,18 +11,7 @@
   </head>
 
 
-  <style>
-    .gradient-custom-2 {
-/* fallback for old browsers */
-background: #fbc2eb;
 
-/* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
-
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1))
-}
-  </style>
 
   {% endblock %}
 
@@ -36,16 +25,16 @@ background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238
             <div class="card" >
               <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
                 <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
-                    alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                    style="width: 150px; z-index: 1">
+                  
+                  <img src="{% static 'img/male user.png' %}" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+
                   <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                     style="z-index: 1;">
                     Edit profile
                   </button>
                 </div>
                 <div class="ms-3" style="margin-top: 130px;">
-                  <h5>Andy Horwitz</h5>
+                  <h5>{{user.username}}</h5>
                   <p>New York</p>
                 </div>
               </div>

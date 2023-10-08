@@ -1,0 +1,26 @@
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="ingredients">Ingredients</label>
+        {{ ingrediend_form.as_p }}
+       <button type="submit" name="add_ingredient">Add Ingredient</button>
+</form>
+<hr>
+<form action="" method="post" style="margin-top: 20px;">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="steps">Steps</label>
+        {{ step_form.as_p }}
+        <button type="submit" name="add_step">Add Step</button>
+</form>
+<hr>
+<form action="" method="post" style="margin-top: 20px;">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="steps">Image</label>
+        {{ image_form.as_p }}
+        <button type="submit" name="add_image">Add Image</button>
+       
+        
+        <button type="submit" name="finish">Go</button>
+</form>
