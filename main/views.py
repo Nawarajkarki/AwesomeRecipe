@@ -39,7 +39,7 @@ def add_ingredients_and_steps_view(request, recipeId):
     image_form = AddImageForm()
     
     context = {
-        "ingrediend_form" : ingredient_form,
+        "ingredient_form" : ingredient_form,
         "step_form" : step_form,
         "image_form" : image_form
     }

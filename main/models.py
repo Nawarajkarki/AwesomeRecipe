@@ -13,7 +13,7 @@ def user_directory_path(instance, filename):
 class RecipePost(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default='')
     posted_at = models.DateTimeField(auto_now_add=True)
-    title = models.Char0Field(max_length=200)
+    title = models.CharField(max_length=200)
     description = models.CharField(max_length=300)
     slug = AutoSlugField(populate_from='title', unique=True)
     

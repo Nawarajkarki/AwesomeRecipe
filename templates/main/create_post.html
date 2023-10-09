@@ -1,10 +1,33 @@
-<table>
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block meta %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Share Your Recipe</title>
+        <link rel="stylesheet" href="{% static 'css/create_post.css' %}">
+    {% endblock %}
 
-    <form action="" method="post">
-        <tr><td>
-        {% csrf_token %}
-            {{ form.as_table }}
-        </td></tr>
-        <button type="submit">Next</button>
-    </form>
-</table>
+</head>
+<body>
+    
+    {% block content %}
+    <div class="form_container flexcol">
+        
+        <div class="form_header">
+            <h2>Share Your Recipe</h2>
+        </div>
+        <form method="post" action=""> 
+            {% csrf_token %}    
+            {{form.title}}
+            {{form.description}}
+            <button type="submit" name="next">NEXT</button>
+        </form>
+    </div>
+    {% endblock %}
+    
+    
+</body>
+</html>

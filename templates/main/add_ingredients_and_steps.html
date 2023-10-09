@@ -1,26 +1,33 @@
-<form action="" method="post">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="ingredients">Ingredients</label>
-        {{ ingrediend_form.as_p }}
-       <button type="submit" name="add_ingredient">Add Ingredient</button>
-</form>
-<hr>
-<form action="" method="post" style="margin-top: 20px;">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="steps">Steps</label>
-        {{ step_form.as_p }}
-        <button type="submit" name="add_step">Add Step</button>
-</form>
-<hr>
-<form action="" method="post" style="margin-top: 20px;">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="steps">Image</label>
-        {{ image_form.as_p }}
-        <button type="submit" name="add_image">Add Image</button>
-       
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block meta %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Share Your Recipe</title>
+        <link rel="stylesheet" href="{% static 'css/add_ingredients_and_steps.css' %}">
+    {% endblock %}
+
+</head>
+<body>
+    
+    {% block content %}
+    <div class="form_container flexcol">
         
-        <button type="submit" name="finish">Go</button>
-</form>
+        <div class="form_header">
+            <h2>Add Ingredients</h2>
+        </div>
+        <form method="post" action=""> 
+            {% csrf_token %}    
+            {{ ingredient_form.ingredient }}
+            {{ ingredient_form.quantity }}
+            <button type="submit" name="next">Add Ingredient</button>
+        </form>
+    </div>
+    {% endblock %}
+    
+    
+</body>
+</html>
