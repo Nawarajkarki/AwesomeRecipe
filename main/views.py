@@ -6,7 +6,14 @@ from .forms import *
 # Create your views here.
 
 def homePage_view(request):
-    return render(request, 'main/home.html')
+    recipes = RecipePost.objects.order_by('-posted_at')
+    
+    context = {
+        'recipes' : recipes,
+        'user' : request.user,
+    }
+    
+    return render(request, 'main/home.html', context)
 
 
 def detail_post_view(request):
@@ -36,18 +43,15 @@ def add_ingredients_and_steps_view(request, recipeId):
     
     ingredient_form = AddIngredientForm()
     step_form = AddStepsForm()
-    image_form = AddImageForm()
     
     context = {
         "ingredient_form" : ingredient_form,
         "step_form" : step_form,
-        "image_form" : image_form
     }
     
     if request.method == 'POST':
         ingredient_form = AddIngredientForm(request.POST)
         step_form = AddStepsForm(request.POST)
-        image_form = AddImageForm(request.POST)
         
         if 'add_ingredient' in request.POST and ingredient_form.is_valid():
             ingredient = ingredient_form.save(commit=False)
@@ -59,16 +63,43 @@ def add_ingredients_and_steps_view(request, recipeId):
             step.recipe = recipe_id
             step.save()
             step_form = AddStepsForm()
-        elif 'add_image' in request.POST and image_form.is_valid():
-            image = image_form.save(commit=False)
-            image.recipe = recipe_id
-            image.save()
-            image_form = AddImageForm() 
         elif 'finish' in request.POST:
-            return redirect('home')
+            return redirect('add_image', recipeId = recipeId)
+        
     return render(request, 'main/add_ingredients_and_steps.html', context)
  
 
-
+# def add_images_views(request, recipeId):
+#         form = AddImageForm()
+#         reicipe_id = get_object_or_404(RecipePost, pk = recipeId)
         
+#         if request.method == "POST":
+#             form = AddImageForm(request.POST)
+#             if form.is_valid():
+#                 image = form.save(commit=False)
+#                 image.recipe = recipeId
+#                 image.save()
+                
+from django.forms import modelformset_factory
+from .models import RecipeImage
+
+AddImageFormSet = modelformset_factory(RecipeImage, fields=('image',), extra=5)
+     
+@login_required
+def add_images_views(request, recipeId):
+    recipe = get_object_or_404(RecipePost, pk=recipeId)
+    
+    if request.method == 'POST':
+        formset = AddImageFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            for form in formset:
+                if form.cleaned_data.get('image'):
+                    image = form.save(commit=False)
+                    image.recipe = recipe
+                    image.save()
+            return redirect('home')
+    else:
+        formset = AddImageFormSet()
+    
+    return render(request, 'main/add_images.html', {'formset': formset})  
     

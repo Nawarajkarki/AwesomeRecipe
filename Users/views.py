@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
 from .forms import *
+from main.models import *
+
 # Create your views here.
 
 
@@ -45,5 +47,16 @@ def login_view(request, *args, **kwargs):
     return render(request, 'Users/login.html', {'form':form})
 
 
-def user_profile(request):
-    return render(request, 'Users/user_profile.html')
+def user_profile(request, username):
+    
+    recipes = RecipePost.objects.filter(author__username = username).order_by('-posted_at')
+    author = get_object_or_404(User, username=username)
+    
+    
+    context = {
+        'author' : author,
+        'user' : request.user,
+        'recipes' : recipes
+    }
+    
+    return render(request, 'Users/user_profile.html', context)

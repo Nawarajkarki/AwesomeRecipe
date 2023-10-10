@@ -39,7 +39,7 @@ class Step(models.Model):
     
 class RecipeImage(models.Model):
     recipe = models.ForeignKey(RecipePost, on_delete=models.CASCADE, related_name= 'images')
-    images = models.ImageField(upload_to=user_directory_path)
+    image = models.ImageField(upload_to=user_directory_path)
     
     
     

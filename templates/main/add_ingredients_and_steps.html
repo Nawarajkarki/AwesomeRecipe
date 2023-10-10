@@ -1,33 +1,60 @@
 {% extends 'base.html' %}
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     {% block meta %}
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Share Your Recipe</title>
-        <link rel="stylesheet" href="{% static 'css/add_ingredients_and_steps.css' %}">
-    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Ingredients and Steps</title>
 
+    <link rel="stylesheet" href="{% static 'css/add_ingredients_and_steps.css' %}">
+
+    <style>
+        
+    </style>
+
+    {% endblock %}
 </head>
 <body>
-    
     {% block content %}
-    <div class="form_container flexcol">
-        
-        <div class="form_header">
-            <h2>Add Ingredients</h2>
+        <div class="form_container flexcol">
+                <div class="form_header">
+                    <h2>Add Ingredients</h2>
+                </div>
+            <form>
+                <div class="ingredient_form flexrow">
+                    {{ingredient_form.ingredient}}
+                    {{ingredient_form.quantity}}
+                </div>
+                <button type="submit" name="add_ingredient">Add Ingredients</button>
+            </form>
+            
+            
+            <div class="form_header">
+                <h2>Add Steps</h2>
+            </div>
+            <form>
+                <div class="step_form">
+                    {{step_form.step}}
+                </div>
+                <button type="submit" name="add_step">Add Step</button>
+            </form>
+            <form action="" method="post">
+                {% csrf_token %}
+                <center>
+                    <button class="finish" type="submit" name="finish" >Finish</button>
+                </center>
+            </form>
+
         </div>
-        <form method="post" action=""> 
-            {% csrf_token %}    
-            {{ ingredient_form.ingredient }}
-            {{ ingredient_form.quantity }}
-            <button type="submit" name="next">Add Ingredient</button>
-        </form>
-    </div>
+
+
+        
     {% endblock %}
-    
-    
+
+
+   
 </body>
 </html>

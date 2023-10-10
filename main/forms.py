@@ -21,7 +21,7 @@ class AddIngredientForm(ModelForm):
         fields = ['ingredient', 'quantity']
         widgets = {
             'ingredient' : forms.TextInput(attrs = {"class" : "recipe_post", "placeholder" : "Recipe ingredient"}),
-            'quantity' : forms.TextInput(attrs = {"class" : "recipe_post", "placeholder" : "Recipe quantity"})
+            'quantity' : forms.TextInput(attrs = {"class" : "recipe_post quantity_input", "placeholder" : "Quantity"})
         }
         
         
@@ -30,12 +30,15 @@ class AddStepsForm(ModelForm):
     class Meta:
         model = Step
         fields = ['step']
+        widgets = {
+            'step' : forms.TextInput(attrs = {"class" : "recipe_post", "placeholder" : "Recipe step"}),
+        }
         
         
 class AddImageForm(ModelForm):
     class Meta:
         model = RecipeImage
-        fields = ['images']
+        fields = ['image']
         
 
         

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Add Images</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+      {{ form.as_p }}
+    {% endfor %}
+    <button type="submit">Upload Images</button>
+  </form>
+{% endblock %}

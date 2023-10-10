@@ -29,13 +29,13 @@
 
 
 .form_container > .form_header > h2{
-    margin-top: 15px;
+    margin-top: 10px;
     font-size: 32px;
 }
 
 
 
-form { width: 80%; max-width:1000px; margin:50px auto; }
+form { width: 80%; max-width:1000px; margin:30px auto 40px auto; }
 
 .recipe_post {
   color:rgb(0, 0, 0);
@@ -45,7 +45,7 @@ form { width: 80%; max-width:1000px; margin:50px auto; }
   border-radius: 5px;
   line-height: 22px;
   background-color: transparent;
-  border:2px solid rgb(11, 94, 215);
+  border:2px solid #CC6666;
   transition: all 0.3s;
   padding: 13px;
   margin-bottom: 15px;
@@ -56,16 +56,25 @@ form { width: 80%; max-width:1000px; margin:50px auto; }
 
 .recipe_post:focus { border:2px solid #CC4949; }
 
+
+
+
 textarea {
   height: 150px;
   line-height: 150%;
   resize:vertical;
 }
 
+
+.quantity_input{
+    width: 20%;
+    margin-left: 15px;
+}
+
 [type="submit"] {
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   width: 100%;
-  background:rgb(11, 94, 215);
+  background:#CC6666;
   border-radius:5px;
   border:0;
   cursor:pointer;
@@ -78,3 +87,12 @@ textarea {
   font-weight:700;
 }
 [type="submit"]:hover { background:#CC4949; }
+
+.finish{
+  width: 150px;
+  background: rgb(11, 94, 215);
+}
+
+.finish:hover{
+  background: rgb(7, 64, 150);
+}
