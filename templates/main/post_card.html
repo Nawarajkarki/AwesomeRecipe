@@ -43,7 +43,7 @@
                 <h2><a href="path/to/post-detail.html">{{recipe.title}}</a></h2>
                 <p>
                     {{recipe.description}}
-                    <a href="{% url 'post_detail' %}" class="see-more-button">. . .See More</a>
+                    <a href="{% url 'post_detail' recipe.slug %}" class="see-more-button">. . .See More</a>
                 </p>
             </div>
 

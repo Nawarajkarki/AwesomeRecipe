@@ -19,6 +19,11 @@
 </head>
 <body>
     {% block content %}
+    {% if error_message %}
+    <div class="alert alert-danger" role="alert">
+        {{ error_message }}
+    </div>
+{% endif %}
         <div class="form_container flexcol">
                 <div class="form_header">
                     <h2>Add Ingredients</h2>

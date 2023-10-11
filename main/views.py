@@ -16,8 +16,19 @@ def homePage_view(request):
     return render(request, 'main/home.html', context)
 
 
-def detail_post_view(request):
-    return render(request, 'main/post_detail.html')
+def detail_post_view(request, slug):
+    recipe = get_object_or_404(RecipePost, slug = slug)
+    ingredients = get_object_or_404(Ingredient, recipe = recipe.id)
+    steps = recipe.step.all()
+    images = recipe.image.all()
+    
+    context = {
+        'recipe' : recipe,
+        'ingredients' : ingredients,
+        'steps' : steps,
+        'images' : images
+    }
+    return render(request, 'main/post_detail.html', context)
 
 
 
@@ -39,7 +50,10 @@ def create_post_view(request):
 
 @login_required
 def add_ingredients_and_steps_view(request, recipeId):
-    recipe_id = get_object_or_404(RecipePost, pk = recipeId)
+    recipe = get_object_or_404(RecipePost, pk = recipeId)
+    
+    ingredients = Ingredient.objects.filter(recipe = recipe)
+    steps = Step.objects.filter(recipe = recipe)
     
     ingredient_form = AddIngredientForm()
     step_form = AddStepsForm()
@@ -55,16 +69,19 @@ def add_ingredients_and_steps_view(request, recipeId):
         
         if 'add_ingredient' in request.POST and ingredient_form.is_valid():
             ingredient = ingredient_form.save(commit=False)
-            ingredient.recipe = recipe_id
+            ingredient.recipe = recipe
             ingredient.save()
             ingredient_form = AddIngredientForm()
         elif 'add_step' in request.POST and step_form.is_valid():
             step = step_form.save(commit=False)
-            step.recipe = recipe_id
+            step.recipe = recipe
             step.save()
             step_form = AddStepsForm()
         elif 'finish' in request.POST:
-            return redirect('add_image', recipeId = recipeId)
+            if not ingredients.exists() or not steps.exists():
+                context['error_message'] = "Please add atleast one ingredient and step"
+            else:
+                return redirect('add_image', recipeId = recipeId)
         
     return render(request, 'main/add_ingredients_and_steps.html', context)
  
