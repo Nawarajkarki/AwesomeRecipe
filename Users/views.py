@@ -19,6 +19,7 @@ def signup_view(request, *args, **kwargs):
             user.username = form.cleaned_data.get('username')
             user.email = form.cleaned_data.get('email')
             user.save()
+            UserProfile.objects.create(user=user)
             login(request, user)
             return redirect('home')
 
@@ -31,12 +32,12 @@ def login_view(request, *args, **kwargs):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password')
-            user = authenticate(request=request, username=email, password=password)
+            email = form.cleaned_data.get['email']
+            password = form.cleaned_data.get['password']
+            user = authenticate(request=request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('home')    
             
             else:
                 form.add_error("None, Invalid email or password")

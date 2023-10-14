@@ -1,13 +1,34 @@
-<html>
-    <body>
-        <form method="post">
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block meta %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{% static 'css/login_signup.css' %} ">
+    {% endblock %}
+</head>
+<body>
+
+    {% block content %}
+    <div class="form_container flexcol">
+
+        <div class="form_header">
+            <h2>Login</h2>
+        </div>
+        <form method="post"> 
             {% csrf_token %}
-            
-            <table>
-                {{ form.as_table }}
-                
-            </table>
-                <button type="submit">Login</button>
-            </form>
-    </body>
+            {{ form.email }}
+            {{ form.password }}
+            <button type="submit" name="login">Login</button>
+        </form>
+    </div>
+
+    {% endblock %}
+
+   
+</body>
 </html>

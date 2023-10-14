@@ -32,7 +32,7 @@ def detail_post_view(request, slug):
 
 
 
-@login_required
+@login_required(login_url='/users/login')
 def create_post_view(request):
     
     form = CreatePostForm()
