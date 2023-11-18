@@ -19,11 +19,11 @@
         <div class="form_header">
             <h2>Login</h2>
         </div>
-        <form method="post"> 
+        <form method="post">
             {% csrf_token %}
-            {{ form.email }}
-            {{ form.password }}
-            <button type="submit" name="login">Login</button>
+            <input type="text" name="username" class="input_area" placeholder="Email" required>
+            <input type="password" name="password" class="input_area" placeholder="Password" required>
+            <button type="submit">Login</button>
         </form>
     </div>
 

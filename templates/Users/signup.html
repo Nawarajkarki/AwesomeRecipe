@@ -19,13 +19,13 @@
         <div class="form_header">
             <h2>Sign Up</h2>
         </div>
-        <form method="post"> 
+        <form method="post">
             {% csrf_token %}
-            {{ form.username }}
-            {{ form.email }}
-            {{ form.password1 }}
-            {{ form.password2 }}
-            <button type="submit" name="signup">Sign Up</button>
+            <input type="text" name="username" class="input_area" placeholder="Username" required>
+            <input type="email" name="email" class="input_area" placeholder="Email address" required>
+            <input type="password" name="password1" class="input_area" placeholder="Password" required>
+            <input type="password" name="password2" class="input_area" placeholder="Confirm Password" required>
+            <button type="submit">Sign Up</button>
         </form>
     </div>
 

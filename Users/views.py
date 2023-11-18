@@ -9,43 +9,39 @@ from main.models import *
 # Create your views here.
 
 
-def signup_view(request, *args, **kwargs):
-    form = UserCreateForm()
-    
+def signup_view(request):
     if request.method == 'POST':
-        form = UserCreateForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.username = form.cleaned_data.get('username')
-            user.email = form.cleaned_data.get('email')
-            user.save()
-            UserProfile.objects.create(user=user)
+            user = form.save()
             login(request, user)
             return redirect('home')
-
+        else:
+            return render(request, 'Users/signup.html', {'form':form})
     else:
-        form = UserCreateForm()
+        form = SignUpForm()
     return render(request, 'Users/signup.html', {'form':form})
 
 
-def login_view(request, *args, **kwargs):
+def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            email = form.cleaned_data.get['email']
-            password = form.cleaned_data.get['password']
-            user = authenticate(request=request, email=email, password=password)
+            print("okey")
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')    
-            
+                print("logedin")
+                return redirect('home')
             else:
-                form.add_error("None, Invalid email or password")
-    
+                print("User not authenticated")
+                print(form.errors)
+                return render(request, 'User/login.html', {'form' : form})
     else:
-        form = UserLoginForm(request.POST)
-
-    return render(request, 'Users/login.html', {'form':form})
+        form = AuthenticationForm()
+    return render(request, 'Users/login.html', {'form': form})
 
 
 def user_profile(request, username):
