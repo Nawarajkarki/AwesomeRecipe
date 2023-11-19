@@ -103,7 +103,6 @@
                         {% for ingredient in ingredients %}
                             <li class="list-group-item d-flex justify-content-between align-items-center">{{ingredient.ingredient}}<span class="badge bg-primary ">{{ingredient.quantity}}</span> </li>
                         {% endfor %}
-                        <li class="list-groupd-flex justify-content-between align-items-center">A list item <span class="badge bg-primary ">14 kg</span> </li>
                       </ul>
                 </div>
                 <!-- -- Steps --  -->
@@ -111,15 +110,10 @@
                     <h2>Steps</h2>
 
                     <ol>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque molestias dignissimos nulla. Qui amet eum ex error dolore suscipit magni illo accusantium eos?</li>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque molestias dignissimos nulla. Qui amet eum ex error dolore suscipit magni illo accusantium eos?</li>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque molestias dignissimos nulla. Qui amet eum ex error dolore suscipit magni illo accusantium eos?</li>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque molestias dignissimos nulla. Qui amet eum ex error dolore suscipit magni illo accusantium eos?</li>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque molestias dignissimos nulla. Qui amet eum ex error dolore suscipit magni illo accusantium eos?</li>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque molestias dignissimos nulla. Qui amet eum ex error dolore suscipit magni illo accusantium eos?</li>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque molestias dignissimos nulla. Qui amet eum ex error dolore suscipit magni illo accusantium eos?</li>
-                        <li>A list item</li>
-                        <li>A list item</li>
+                        {% for step in steps %}
+                            <li>{{step.step}} </li>
+                        {% endfor %}
+                        
                       </ol>
                 </div>
             </div>
