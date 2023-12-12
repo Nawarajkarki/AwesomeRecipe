@@ -2,7 +2,6 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,6 +75,8 @@ WSGI_APPLICATION = "AwesomeRecipe.wsgi.application"
 #     }
 # }
 
+load_dotenv()
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -125,7 +126,7 @@ USE_TZ = True
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static')
 
 MEDIA_URL = 'media/'
 
