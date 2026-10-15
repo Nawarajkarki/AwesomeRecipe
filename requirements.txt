@@ -1,7 +1,16 @@
-asgiref==3.7.2
-Django==4.2.5
-django-autoslug==1.9.9
-Pillow==10.0.1
-python-dotenv==1.0.0
-sqlparse==0.4.4
-tzdata==2023.3
+bottle==0.13.4
+cffi==2.1.1
+clr_loader==0.3.1
+keyboard==0.13.5
+numpy==2.5.2
+proxy_tools==0.1.0
+psutil==7.2.2
+pycparser==3.0
+pygame==2.6.1
+pythonnet==3.1.0
+pywebview==6.2.1
+sounddevice==0.5.5
+spankurlaptop @ git+https://github.com/NithinVarma50/spankurlaptop.git@839e81899bfa8b6004d87aaecc14f023a20e8466
+typing_extensions==4.16.0
+winrt-runtime==3.2.1
+winrt-Windows.Devices.Sensors==3.2.1
