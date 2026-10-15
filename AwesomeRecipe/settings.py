@@ -42,6 +42,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_ratelatch.integrations.middleware.RateLimitMiddleware",
 ]
 
 ROOT_URLCONF = "AwesomeRecipe.urls"
@@ -138,3 +139,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = '/user/login/'
+
+
+RATE_LIMITER = {
+    "ALGORITHM": "fixed_window",
+    "LIMIT": 10,
+    "WINDOW_SECONDS": 60,
+    "KEY_FUNCTION": "my_project.rate_limit_key.get_rate_limit_key",
+    "BACKEND": "memory",
+}
